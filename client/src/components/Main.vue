@@ -180,7 +180,7 @@
 </template>
 
 <script>
-import config from "../../config";
+import config from "../config";
 import axios from 'axios'
   export default {
     name: 'Main',
@@ -330,6 +330,9 @@ import axios from 'axios'
     watch: {
       dialog (val) {
         val || this.close()
+        this.$nextTick(() => {
+          this.$refs.form.resetValidation()
+        })
       },
       dialogDelete (val) {
         val || this.closeDelete()

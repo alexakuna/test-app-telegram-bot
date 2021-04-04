@@ -61,7 +61,6 @@ email: ${user.email},
 bot.command('name', async (ctx) => {
     const str = ctx.message.text.split(' ')
     if(str.length < 2) return
-    console.log(str[1])
     try {
         const user = await User.findOne({name: str[1]})
         ctx.reply(`Имя: ${user.name},
@@ -75,7 +74,6 @@ email: ${user.email},
 bot.command('email', async (ctx) => {
     const str = ctx.message.text.split(' ')
     if(str.length < 2) return
-    console.log(str[1])
     try {
         const user = await User.findOne({email: str[1]})
         ctx.reply(`Имя: ${user.name},
@@ -89,7 +87,6 @@ email: ${user.email},
 bot.command('birthday', async (ctx) => {
     const str = ctx.message.text.split(' ')
     if(str.length < 2) return
-    console.log(str[1])
     try {
         const user = await User.findOne({date_of_birth: str[1]})
         ctx.reply(`Имя: ${user.name},
@@ -142,6 +139,7 @@ app.use('/api/create', createRouter)
 app.use('/api', usersRouter)
 app.use('/api', usersRouter)
 
+// Перед деплоем раскомментировать!
 // app.use(express.static(__dirname + '/dist/'))
 // app.get(/.*/, (req, res) => {
 //     res.sendFile(__dirname + '/dist/index.html')
